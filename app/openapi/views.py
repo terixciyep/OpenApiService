@@ -19,7 +19,7 @@ class FilesViewSet(mixins.CreateModelMixin,
     queryset = OpenApiFile.objects.all()
     serializer_class = FileSerializer
 
-class AllowedHTTPMethodsViewSet(mixins.ListModelMixin,
+class AllowedHTTPMethodsViewSet(
                                 mixins.CreateModelMixin,
                                 GenericViewSet):
     queryset = AllowedHTTPMethods.objects.all()

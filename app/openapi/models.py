@@ -2,7 +2,7 @@ from django.db import models
 
 
 class OpenApiFile(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
     file = models.FileField(upload_to='openapi_files')
 
 class AllowedHTTPMethods(models.Model):

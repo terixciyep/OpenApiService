@@ -1,0 +1,11 @@
+SELECT CASE WHEN EXISTS (
+    SELECT 1
+    FROM users u1, users u2
+    WHERE u1.user_id <> u2.user_id
+      AND (
+        (u1.dt_start BETWEEN u2.dt_start AND u2.dt_end)
+        OR (u1.dt_end BETWEEN u2.dt_start AND u2.dt_end)
+        OR (u1.dt_start <= u2.dt_start AND u1.dt_end >= u2.dt_end)
+      )
+) THEN 'True' ELSE 'False' END AS has_overlap
+FROM users u1

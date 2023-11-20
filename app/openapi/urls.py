@@ -8,7 +8,7 @@ router.register(r'file', FilesViewSet, basename='files')
 router.register(r'add_methods', AllowedHTTPMethodsViewSet, basename='methods')
 
 urlpatterns = [
-    path('methods/<int:pk>', FileDetailAPIView.as_view(), name='methodsView'),
+    path('file_detail/<int:pk>', FileDetailAPIView.as_view(), name='FileDetailView'),
     path('', include(router.urls),
 )
 ]
