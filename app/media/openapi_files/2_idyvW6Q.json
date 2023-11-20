@@ -1,0 +1,99 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Пример API с разными HTTP методами",
+    "description": "Это пример файла OpenAPI в формате JSON с разными HTTP методами",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.example.com",
+      "description": "Основной сервер"
+    }
+  ],
+  "paths": {
+    "/users": {
+      "get": {
+        "summary": "Получить список пользователей",
+        "description": "Возвращает список всех пользователей",
+        "responses": {
+          "200": {
+            "description": "Список пользователей получен успешно",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "username": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "format": "email"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Создать нового пользователя",
+        "description": "Создает нового пользователя на сервере",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  }
+                },
+                "required": ["username", "email"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Пользователь успешно создан"
+          },
+          "400": {
+            "description": "Неверный запрос"
+          }
+        }
+      },
+      "put": {
+        "summary": "Обновить всех пользователей",
+        "description": "Обновляет информацию о всех пользователях",
+        "responses": {
+          "200": {
+            "description": "Информация обновлена успешно"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Удалить всех пользователей",
+        "description": "Удаляет всех пользователей",
+        "responses": {
+          "204": {
+            "description": "Пользователи успешно удалены"
+          }
+        }
+      }
+    }
+  }
+}
